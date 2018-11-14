@@ -1,0 +1,16 @@
+Primeiro iremos criar um volume, porém desta ves iremos associar esse volume com uma pasta real que temos no computador, um documento de exemplo, como uma pasta contendo codigo de Node JS.
+
+#Criar volume e fazer referência a pasta do código
+docker run -v "C:\Users\Pedro\NodeJs: /var/www" node( nome_da_imagem )
+
+Porem para funcionar de modo em que posssamos testar sem travar nosso cmd e definirmos a porta que sera utilizada iremos fazer o seguinte codigo
+
+docker run -p 8080:3000 -v -d "C:\Users\Pedro\NodeJs: /var/www" -w "/var/www" node npm start
+
+O que o código faz: linkamos a porta do serviço 3000 com uma porta do nosso computador 8080 no caso, criamos o volume com -v, -d rodamos em background.
+Passamos o diretorio de trabalho do container com -w(working directory), startamos o node com npm start
+
+
+
+
+ 

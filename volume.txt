@@ -1,0 +1,13 @@
+Quando criamos container estamos toda hora removendo e criando(são volateis), por isso quando queremos persistir deixar nossos registros e logs precisaremos utilizar o que chamamos de volume.
+
+Volume é o lugar que iremos salvar esses dados.
+Quando criamos um volume de dados, o que estamos fazendo é apontá-lo para uma pequena pasta no Docker Host. Então, quando criamos um volume, criamos uma pasta dentro do container, e o que escrevermos dentro dessa pasta na verdade estaremos escrevendo do Docker Host.
+Isso faz com que não percamos os nossos dados, pois o container até pode ser removido, mas a pasta no Docker Host ficará intacta
+#Criando um volume
+ 
+docker run -v "diretorio" nome_da_imagem
+#Criando um volume e especificando o diretorio do seu computador que quer salvar
+docker run -v "C:\Users\Pedro\Desktop:/var/www" nome_da_imagem
+ 
+#Inspecionar container
+docker inspect id_do_container

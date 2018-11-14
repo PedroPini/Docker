@@ -1,0 +1,20 @@
+Criando um docker File
+FROM node:lastest -- imagem que pegamos na sua versão mais recente
+MAINTAINER Pedro Pini -- Nome de quem criou a imagem
+COPY ./var/www --Copiamos nosso codigo para imagem
+WORKDIR /var/www -- onde o comando de  start devera ser executado
+RUN npm install --Executa o comando que instala o node na imagem
+ENTRYPOINT npm start -- Starta o node na nossa imagem
+EXPOSE 3000 -- Porta que defini para o node js escutar
+
+FEITO O ARQUIVO iremos criar a imagem no CMD
+
+#-f especifica que é um arquivo a ser lido, -t é a tag de quem criou a imagem e nome da imagem e o ponto no final é a especificacao de onde esta o arquivo docker file, como esta no mesmo diretorio usaremos ponto.
+docker build -f DockerFile -t pedropini/node .
+#(caso você criou um arquivo chamado node.dockerfile), precisa por :
+
+docker build -f node.dockerfile
+
+Após isso criaremos um container a partir da nossa imagem
+
+docker run -d -p 8080:3000 pedropini/node
